@@ -1,0 +1,6 @@
+*.vcd
+uut
+obj_dir/
+*.o
+*.d
+*.vvp
