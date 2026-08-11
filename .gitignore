@@ -4,3 +4,11 @@ obj_dir/
 *.o
 *.d
 *.vvp
+
+obj_dir/
+
+# Verilator executable
+hello
+
+# Linux executable
+a.out

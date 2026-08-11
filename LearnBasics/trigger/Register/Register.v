@@ -1,11 +1,11 @@
-module Register (
-    input [7:0] in,
+module Register # (
+    parameter WIDTH 8
+) (
+    input [WIDTH - 1:0] in,
     input clk,
     input rst,
-    input pre_rst,
-    input OC,
-    output [7:0] out,
-    output [7:0] not_out
+    input EN,
+    output [WIDTH - 1:0] out,
 );
 
     // genvar i;
@@ -22,19 +22,15 @@ module Register (
     //     end
     // endgenerate
 
-
-    reg [7:0] q;
+    reg [WIDTH - 1:0] q;
     always @ (posedge clk, negedge rst, negedge pre_rst) begin
-        if (!rst) begin
-            q <= 8'd0;
-        end else if (!pre_rst) begin
-            q <= 8'd255;
+        if (rst) begin
+            q <= WIDTH'd0;
         end else begin
             q <= in;
         end
     end
 
-    assign out = (!OC) ? q : 8'bzzzzzzzz;
-    assign not_out = (!OC) ? ~q : 8'bzzzzzzzz;
+    assign out = (EN) ? q : 8'bzzzzzzzz;
     
 endmodule
