@@ -5,19 +5,11 @@ module tb_Register;
     reg [7:0] in;
     reg clk;
     reg rst;
-    reg pre_rst;
-    reg OC;
+    reg EN;
     wire [7:0] out;
-    wire [7:0] not_out;
 
     Register uut (
-        .in(in),
-        .clk(clk),
-        .rst(rst),
-        .pre_rst(pre_rst),
-        .OC(OC),
-        .out(out),
-        .not_out(not_out)
+        .*
     );
 
     initial begin
@@ -31,27 +23,28 @@ module tb_Register;
     end
 
     initial begin
-        $monitor("Time=%0t in=%b rst=%b pre_rst=%b OC=%b out=%b not_out=%b",
-                $time, in, rst, pre_rst, OC, out, not_out);
+        $monitor("Time=%0t in=%b rst=%b EN=%b out=%b",
+                $time, in, rst, EN, out);
             in = 8'd0;
-            rst = 1'b1;
-            pre_rst = 1'b1;
-            OC = 1'b0;
+            rst = 1'b0;
+            EN = 1'b0;
 
             #3; 
             in = 8'd8;
 
-            #15;
-            OC = 1'b1;
+            #12;
+            EN = 1'b1;
 
-            #20;
+            #5;
+            rst = 1'b1;
+
+            #5;
             rst = 1'b0;
 
-            #25;
-            rst = 1'b1;
-            pre_rst = 1'b0;
+            #5;
+            EN = 1'b0;
 
-            #30 $finish;
+            #10 $finish;
     end
 
 endmodule

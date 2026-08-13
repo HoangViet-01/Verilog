@@ -1,11 +1,11 @@
 module Register # (
-    parameter WIDTH 8
+    parameter WIDTH = 8
 ) (
     input [WIDTH - 1:0] in,
     input clk,
     input rst,
     input EN,
-    output [WIDTH - 1:0] out,
+    output reg [WIDTH - 1:0] out
 );
 
     // genvar i;
@@ -22,15 +22,14 @@ module Register # (
     //     end
     // endgenerate
 
-    reg [WIDTH - 1:0] q;
-    always @ (posedge clk, negedge rst, negedge pre_rst) begin
+    always @ (posedge clk, posedge rst) begin
         if (rst) begin
-            q <= WIDTH'd0;
+            out <= '0;
         end else begin
-            q <= in;
+            if (EN) begin
+                out <= in;
+            end
         end
     end
-
-    assign out = (EN) ? q : 8'bzzzzzzzz;
     
 endmodule
