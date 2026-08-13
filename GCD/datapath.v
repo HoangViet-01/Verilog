@@ -43,7 +43,7 @@ module datapath # (
         .out(Q_y)
     );
 
-    // Trigger D_gcd
+    // Trigger D_gcd.
     Register # (
         .WIDTH(WIDTH)
     ) reg_gcd (
