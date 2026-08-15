@@ -10,7 +10,7 @@ module datapath # (
     output x_neq_y, x_lt_y
 );
 
-    reg [WIDTH - 1:0] Q_x, Q_y, Q_gcd;
+    wire [WIDTH - 1:0] Q_x, Q_y, Q_gcd;
     wire [WIDTH - 1:0] x, y, x_sub_y, y_sub_x;
 
     // Khối chọn dữ liệu tính toán (Mux).
@@ -64,7 +64,7 @@ module datapath # (
     ) sub_x (
         .a(Q_x),
         .b(Q_y),
-        .out(x_sub_y)
+        .D(x_sub_y)
     );
 
     // Bộ trừ y_sub_x.
@@ -73,7 +73,7 @@ module datapath # (
     ) sub_y (
         .a(Q_y),
         .b(Q_x),
-        .out(y_sub_x)
+        .D(y_sub_x)
     );
 
     // 2 bộ so sánh (comp).
