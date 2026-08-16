@@ -6,8 +6,8 @@ module ALU # (
     input [2:0] op,
     output reg car_bor,
     output reg [WIDTH - 1:0] out,
-    output zero,
-    output negative,
+    output zero, // Xác định kết quả có bằng 0 hay ko.
+    output negative, // xác định kết quả có âm hay ko.
     output overflow
 );
 
