@@ -2,8 +2,8 @@ module Register # (
     parameter WIDTH = 8
 ) (
     input [WIDTH - 1:0] in,
-    input clk,
-    input rst,
+    input CLK,
+    input RST,
     input EN,
     output reg [WIDTH - 1:0] out
 );
@@ -22,8 +22,8 @@ module Register # (
     //     end
     // endgenerate
 
-    always @ (posedge clk, posedge rst) begin
-        if (rst) begin
+    always @ (posedge CLK, posedge RST) begin
+        if (RST) begin
             out <= '0;
         end else begin
             if (EN) begin

@@ -3,8 +3,8 @@
 module tb_Register;
 
     reg [7:0] in;
-    reg clk;
-    reg rst;
+    reg CLK;
+    reg RST;
     reg EN;
     wire [7:0] out;
 
@@ -13,8 +13,8 @@ module tb_Register;
     );
 
     initial begin
-        clk = 0;
-        forever #5 clk = ~clk;
+        CLK = 0;
+        forever #5 CLK = ~CLK;
     end
 
     initial begin
@@ -24,7 +24,7 @@ module tb_Register;
 
     initial begin
         $monitor("Time=%0t in=%b rst=%b EN=%b out=%b",
-                $time, in, rst, EN, out);
+                $time, in, RST, EN, out);
             in = 8'd0;
             rst = 1'b0;
             EN = 1'b0;

@@ -1,5 +1,5 @@
 module Ripple_Carry_Adder # (
-    parameter WIDTH = 8
+    parameter WIDTH = 4
 ) (
     input [WIDTH - 1:0] a,
     input [WIDTH - 1:0] b,
