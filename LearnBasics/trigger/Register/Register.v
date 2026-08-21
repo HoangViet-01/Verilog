@@ -21,6 +21,7 @@ module Register # (
     //         );
     //     end
     // endgenerate
+    //
 
     always @ (posedge CLK, posedge RST) begin
         if (RST) begin
