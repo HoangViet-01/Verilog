@@ -4,7 +4,7 @@ module priority_encoder #(
     input [14:0] F1,
     output [3:0] sub
 );
-
+    // 15 cong mux.
     assign sub = F1[14] ? 4'b0000 :
                  F1[13] ? 4'b0001 :
                  F1[12] ? 4'b0010 :
